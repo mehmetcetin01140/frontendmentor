@@ -1,13 +1,15 @@
 import React from 'react'
 import Illustration from "../images/illustration-editor-desktop.svg"
+import illustrationMobile from "../images/illustration-editor-mobile.svg"
 import {Container,Row,Col} from "react-bootstrap"
 export default function MainTop() {
+
   return (
     <>
           <h3>Designed for the future</h3>
        <div className='main-flex-items'>
     <Row>
-      <Col md={6} xs={12}>
+      <Col md={6} xs={12} className={"p-0"}>
         <div className='text-area'>
             <h4>Introducing an extensible editor</h4>
         <p>
@@ -23,9 +25,13 @@ export default function MainTop() {
         
         </div>
         </Col>
-        <Col md={6} xs={12}>
+        <Col md={6} xs={12} className="p-0">
         <div className='image-area'>
-        <img src={Illustration} alt="" />
+        <picture>
+    <source media="(max-width: 766px)" srcset={illustrationMobile}/>
+    <img src={Illustration} alt="IfItDoesntMatchAnyMedia"/>
+    </picture>
+        
         </div>
         </Col>
        </Row>

@@ -1,12 +1,16 @@
 import React from 'react'
 import {Row,Col} from "react-bootstrap"
 import laptopImage from "../images/illustration-laptop-desktop.svg"
+import laptopMobile from "../images/illustration-laptop-mobile.svg"
 export default function MainBottom() {
   return (
     <div className="main-bottom">
         <Row>
-            <Col md={6}>
+            <Col md={6} className="p-0">
+            <picture>
+    <source media="(max-width: 766px)" srcset={laptopMobile}/>
                <img src={laptopImage} alt="" />
+          </picture>
             </Col>
             <Col md={6} className="text-area">
               <h3>Free, open, simple</h3>

@@ -4,7 +4,7 @@ import illusPhones from "../images/illustration-phones.svg"
 export default function MainCenter() {
   return (
     <div className='main-center'>
-      <Container>
+      <Container className='d-flex justify-content-center align-items-center'>
         <div className="d-flex">
       <div className='phone-image'>
       <img src={illusPhones} />
