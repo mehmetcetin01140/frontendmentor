@@ -1,49 +1,60 @@
-import React, { useState,useEffect } from 'react'
-import Logo from "../images/logo.svg"
-import arrowLight from "../images/icon-arrow-light.svg"
+import React, { useState, useEffect } from "react";
 
 export default function NavItems() {
-    const [dropdownObject,setDropdownObject] = useState([{name:"product"},{name:"company"},{name:"dada"}])
-    
-  
+  const [dropdownObject, setDropdownObject] = useState([
+    { name: "Company" },
+    { name: "Product" },
+    { name: "Connect" },
+  ]);
+
   const handleDropdown = (id) => {
-    const dropdownItems = dropdownObject.filter(item => {
-      if(item.id === id){
+    const dropdownItems = dropdownObject.filter((item) => {
+      if (item.id === id) {
         item.isopen = !item.isopen;
         return item;
-      }
-      else{
+      } else {
         item.isopen = false;
         return item;
       }
     });
 
-    setDropdownObject(dropdownItems)
-
-  }
+    setDropdownObject(dropdownItems);
+  };
   return (
-    <>          
-    <img src={Logo} />
-    {
-        dropdownObject.map((item, index)=>{
-          item.id = index;
-          console.log(item.isopen);
-          return(
-            <div className='dropdown'>
-            <span onClick={()=> handleDropdown(item.id)} className="test-class">
-             {item.name}
-            </span>
-            <div className={`dropdown-content ${item.isopen === true ? "d-block" : null}`}>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-          <img src={arrowLight} height="10" width="10" className={item.isopen===true ? "transform-arrow" : ""}/>
+    <>
+      {dropdownObject.map((item, index) => {
+        item.id = index;
+        return (
+          <div className="dropdown">
+            <span onClick={() => handleDropdown(item.id)}>{item.name}</span>
+            <picture>
+              <source
+                media="(max-width: 1200px)"
+                srcset={"/images/icon-arrow-dark.svg"}
+                height="10"
+                width="10"
+                className={item.isopen === true ? "transform-arrow" : ""}
+              />
+              <img
+                src={"/images/icon-arrow-light.svg"}
+                height="10"
+                width="10"
+                className={item.isopen === true ? "transform-arrow" : ""}
+              />
+            </picture>
+
+            <div
+              className={`dropdown-content ${
+                item.isopen === true ? "d-block" : null
+              }`}
+            >
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
           </div>
-          )
-        })
-    }
-   
+        );
+      })}
     </>
-  )
+  );
 }
